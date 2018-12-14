@@ -1,0 +1,30 @@
+.bg {
+  height: 100vh;
+  background: url("../../images/water-drops-on-window-rain-raining-crying-sadness-sad-blurred-background_rdev0dro8__F0000.png");
+
+}
+
+.login-card {
+  position: absolute;
+  max-width: 80vh;
+  top: 10%;
+  right: 0;
+  bottom: 10%;
+  left: 0;
+  margin: auto;
+}
+
+.tab-label {
+  width: 75vh;
+}
+
+.mat-tab {
+
+  position: absolute;
+  max-width: 80vh;
+  top: 10%;
+  right: 0;
+  bottom: 10%;
+  left: 0;
+  margin: auto;
+}

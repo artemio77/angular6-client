@@ -1,0 +1,22 @@
+@import '~@angular/material/theming';
+
+@import 'themes/default-app-theme';
+@import 'themes/light-app-theme';
+@import 'themes/dark-app-theme';
+@include mat-core();
+
+
+.my-theme {
+  @include angular-material-theme ($default-theme);
+}
+
+// дополнительные классы css
+// вы можете жестко закодировать один из них в теге <body>
+// или динамически переключаться во время выполнения с помощью [class]
+.my-light-theme {
+  @include angular-material-theme ($light-theme);
+}
+
+.my-dark-theme {
+  @include angular-material-theme ($dark-theme);
+}

@@ -1,0 +1,33 @@
+<div class="center">
+  <div headertext="Drop files here"(drop)="onDropFile($event)" (dragover)="onDragOverFile($event)" (change)="selectFile($event)">
+    <span>optional content (don't set headertext then)</span>
+  </div>
+  <div class="upload-table">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody class="upload-name-style">
+      <tr *ngFor="let item of files; let i=index">
+        <td><strong>{{ item.relativePath }}</strong></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!--<div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone" (onFileDrop)="dropped($event)"
+     (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+  Just drag and drop files here
+</div>
+
+<mat-file-upload-queue #fileUploadQueue
+                       [fileAlias]="'file'"
+                       [httpUrl]="'http://localhost:8082/spring-security-oauth-resource/post'"
+                       [httpRequestHeaders]="headers">
+  <mat-file-upload [file]="file" [id]="i"
+                   *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+</mat-file-upload-queue>-->

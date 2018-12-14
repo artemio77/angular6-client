@@ -1,0 +1,19 @@
+<div class="bg">
+  <mat-progress-bar mode="determinate" [value]="loader.progress$|async"></mat-progress-bar>
+  <div class="login-card">
+    <mat-card>
+      <mat-card-header>
+        <h2>MyMessenger</h2>
+      </mat-card-header>
+      <mat-tab-group [(selectedIndex)]=selectedIndex mat-stretch-tabs class="tab-label" >
+        <mat-tab label="Login" matTabLabelWrapper="">
+          <app-login></app-login>
+        </mat-tab>
+        <mat-tab label="Registration">
+          <app-registration></app-registration>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</div>
+<router-outlet></router-outlet>

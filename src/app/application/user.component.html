@@ -1,0 +1,41 @@
+<div class="example-container">
+  <mat-progress-bar mode="determinate" [value]="loader.progress$|async"></mat-progress-bar>
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="example-app-name">Responsive App</h1>
+    <button mat-raised-button color="primary" (click)="logout()" style="margin-left: 80%">Logout</button>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container app_sidenav_content bg">
+    <mat-sidenav #snav [mode]="'push'">
+      <mat-nav-list>
+        <mat-list-item>
+          {{user.firstName}} {{user.lastName}}
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>{{user.email}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="routeOnAppUrl" (click)="snav.close()">Applications</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="routeOnChatUrl" (click)="snav.close()">Messages</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Groups</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="routeOnFileStorageUrl" (click)="snav.close()">File Store</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Settings</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item (click)="logout()">Logout</mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-card class="user-card">
+        <router-outlet></router-outlet>
+      </mat-card>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+

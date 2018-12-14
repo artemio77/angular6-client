@@ -1,0 +1,29 @@
+.spinner {
+  align-content: center;
+  top: 10%;
+  right: 50%;
+  bottom: 20%;
+  left: 0;
+  margin: auto;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+
+}
+
+.example-container > * {
+  width: 100%;
+
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

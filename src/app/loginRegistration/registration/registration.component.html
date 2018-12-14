@@ -1,0 +1,90 @@
+<mat-horizontal-stepper  [linear]="true" #stepper>
+  <mat-step [stepControl]="form">
+    <ng-template matStepLabel>Fill your information</ng-template>
+    <form (submit)="registration()" [formGroup]="form" class="md-form text-center">
+      <div [(hidden)]=state>
+        <div class="example-container">
+          <!-- name -->
+          <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="user.firstName" [formControl]="firstNameFormControl"
+                   formControlName="firstName"
+                   [errorStateMatcher]="matcher"
+                   type="text">
+          </mat-form-field>
+          <mat-error *ngIf="firstNameFormControl.hasError('pattern') && !firstNameFormControl.hasError('required')">
+            Please enter a valid name
+          </mat-error>
+          <mat-error *ngIf="firstNameFormControl.hasError('required')">
+            Name is required
+          </mat-error>
+          <!-- surName -->
+          <mat-form-field>
+            <input matInput placeholder="Surname" [(ngModel)]="user.lastName" [formControl]="surnameFormControl"
+                   formControlName="lastName"
+                   [errorStateMatcher]="matcher"
+                   type="text">
+          </mat-form-field>
+          <mat-error *ngIf="surnameFormControl.hasError('pattern') && !surnameFormControl.hasError('required')">
+            Please enter a valid surname
+          </mat-error>
+          <mat-error *ngIf="surnameFormControl.hasError('required')">
+            Surname is required
+          </mat-error>
+          <!-- email -->
+          <mat-form-field>
+            <input matInput placeholder="E-mail" [(ngModel)]="user.email" [formControl]="emailFormControl"
+                   formControlName="email"
+                   [errorStateMatcher]="matcher"
+                   type="email"
+                   id="email">
+          </mat-form-field>
+          <mat-error *ngIf="emailFormControl.hasError('exists') && !emailFormControl.hasError('required')">
+            This email already used
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is required
+          </mat-error>
+          <!-- password -->
+          <mat-form-field>
+            <input matInput placeholder="Password" [(ngModel)]="user.password" formControlName="password" id="password"
+                   [formControl]="passwordFormControl"
+                   [errorStateMatcher]="matcher"
+                   type="password">
+          </mat-form-field>
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="passwordFormControl.hasError('min') && !passwordFormControl.hasError('required')">
+            Minimal password length 4 symbols
+          </mat-error>
+        </div>
+        <button mat-raised-button matStepperNext color="primary" [disabled]="form.invalid" type="submit">Registration
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondForm">
+    <ng-template matStepLabel>Verification</ng-template>
+    <form (submit)="checkCode()" [formGroup]="secondFormGroup" class="md-form text-center">
+      <mat-form-field>
+        <input matInput type="text" maxlength="5" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+               placeholder="Code" [(ngModel)]="code" formControlName="code" [formControl]="codeFormControl">
+        <mat-error *ngIf="codeFormControl.hasError('required')">
+          Code is required
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="secondFormGroup.invalid" type="submit">Check Code
+      </button>
+      <button mat-raised-button matStepperNext id="codeNext" hidden>Check Code
+      </button>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdForm">
+    <ng-template matStepLabel>Login</ng-template>
+  </mat-step>
+</mat-horizontal-stepper>
+
+

@@ -1,0 +1,36 @@
+
+<form (submit)="loginToken()" [formGroup]="form">
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput placeholder="Login" [(ngModel)]="credentials.login" [formControl]="emailFormControl"
+             formControlName="login"
+             [errorStateMatcher]="matcher"
+             type="email">
+    </mat-form-field>
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is required
+    </mat-error>
+    <mat-form-field>
+      <input matInput placeholder="Password" [(ngModel)]="credentials.password" formControlName="password"
+             [formControl]="passwordFormControl"
+             type="password">
+    </mat-form-field>
+    <mat-error *ngIf="passwordFormControl.hasError('required')">
+      Password is required
+    </mat-error>
+    <mat-error *ngIf="passwordFormControl.hasError('min')">
+      Minimal password length 4 symbols
+    </mat-error>
+    <mat-error [hidden]="!error">
+      <strong>Login or password are incorrect</strong>
+    </mat-error>
+    <button mat-raised-button color="primary"  [disabled]="form.invalid" type="submit">Login
+    </button>
+  </div>
+</form>
+
+
+
