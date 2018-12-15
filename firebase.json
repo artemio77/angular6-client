@@ -1,6 +1,6 @@
 {
   "firebase": "<FirebaseAppName>",
-  "public": "./dist",
+  public: "dist/client",
   "ignore": [
     "firebase.json",
     "**/.*",
