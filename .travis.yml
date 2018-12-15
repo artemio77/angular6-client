@@ -15,8 +15,6 @@ notifications:
     on_failure: derevets.artem@gmail.com
     on_success: derevets.artem@gmail.com
 
-deploy:
-  provider: firebase
-  token:secure: "AIzaSyBOz2n1Y7gHOE3Z6tK18SUFKbXk9VX56X4"
 
-  message: "Firebase-Deploy"
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN --non-interactive
