@@ -1,11 +1,9 @@
 {
-  "hosting": {
-    "public": "public",
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
+  "firebase": "<FirebaseAppName>",
+  "public": "./dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
 }
