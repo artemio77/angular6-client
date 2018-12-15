@@ -44,6 +44,7 @@ export class UserFileStorageComponent implements OnInit {
     event.preventDefault();
     /*this.dialog.open(width: '250px',
       data: {name: this.name, animal: this.animal});*/
+
     this.uploadFile(event.dataTransfer.files);
   }
 
