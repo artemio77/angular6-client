@@ -13,3 +13,10 @@ notifications:
   email: # only receive email when the build status changes (someone broke the build!)
     on_failure: derevets.artem@gmail.com
     on_success: derevets.artem@gmail.com
+
+
+deploy:
+  provider: firebase
+  token:
+    secure: "AIzaSyAWdCPMH9JKK9TEdN5FQWdQjgN_K2VGv0I"
+  message: "Firebase-Deploy"
