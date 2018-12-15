@@ -32,6 +32,8 @@
             "production": {
               "fileReplacements": [
                 {
+                  "with": "",
+                  "replace": ""
                 }
               ],
               "optimization": true,

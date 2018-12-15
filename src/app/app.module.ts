@@ -1,5 +1,3 @@
-///<reference path="../../node_modules/@angular/material/tooltip/typings/tooltip-module.d.ts"/>
-import { AngularFileUploaderModule } from "angular-file-uploader";
 import {
   MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule, MatButtonModule, MatButtonToggleModule, MatCardModule,
   MatCheckboxModule,
@@ -54,7 +52,6 @@ import {UserContentComponent} from './application/user-application/user-content.
 import {UserChatComponent} from './application/user-chat/user-chat.component';
 import {RouterModule} from '@angular/router';
 import {UserFileStorageComponent} from './application/user-file-storage/user-file-storage.component';
-import {FileDropModule} from 'ngx-file-drop';
 import {UploadService} from '../service/upload.service';
 
 
@@ -129,11 +126,8 @@ export class DemoMaterialModule {
     LoadingBarHttpModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
-    RouterModule,
     MatFileUploadModule,
-    AngularFileUploaderModule,
-    FileDropModule
-
+    RouterModule
   ],
   providers: [
     AuthService,
