@@ -18,5 +18,5 @@ notifications:
 deploy:
   provider: firebase
   token:
-    secure: "AIzaSyAWdCPMH9JKK9TEdN5FQWdQjgN_K2VGv0I"
+    secure: "1/oeCZ-8VuLmtrfcn_b-bAog5JsSTsg30hMF2ND8zv2Hs"
   message: "Firebase-Deploy"
