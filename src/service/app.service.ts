@@ -21,7 +21,7 @@ export class AppService {
   private login;
 
   private users = new User();
-  private checkTokenUrl = 'http://localhost:8081/oauth/check_token';
+  private checkTokenUrl = 'https://oauth-my-autorization-server.herokuapp.com/oauth/check_token';
 
   visibleLogin = true;
   private data;
