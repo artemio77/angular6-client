@@ -43,7 +43,7 @@ export class AppService {
     });
     const options = new RequestOptions({headers: headers});
     console.log(params.toString());
-    this._http.post('http://localhost:8081/oauth/token', params.toString(), options)
+    this._http.post('https://oauth-my-autorization-server.herokuapp.com/oauth/token', params.toString(), options)
       .subscribe(
         data => {
           this.saveToken(data.json(), loginData.login, loginData.password);
