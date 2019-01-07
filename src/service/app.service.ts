@@ -104,7 +104,7 @@ export class AppService {
     const httpParams = new URLSearchParams();
     console.log('checkCredentials token' + Cookie.get('access_token'));
     httpParams.append('token', Cookie.get('access_token'));
-    const req = new HttpRequest('POST', this.oauthUrl + 'oauth/check_token', httpParams.toString(), {
+    const req = new HttpRequest('POST', this.oauthUrl + '/oauth/check_token', httpParams.toString(), {
       headers: headers,
     });
     this.httpClient.request(req).subscribe(

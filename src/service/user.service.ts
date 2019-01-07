@@ -24,7 +24,7 @@ export class UserService {
 
 
   public getAuthUser(email): Observable<User> {
-    return this.httpClient.get<User>(this.oauthApiUrl + 'auth/logged/' + email, {responseType: 'json'});
+    return this.httpClient.get<User>(this.oauthApiUrl + '/auth/logged/' + email, {responseType: 'json'});
   }
 
   public getUsers() {
@@ -40,7 +40,7 @@ export class UserService {
   }
 
   public getUserCode(code: number) {
-    return this.http.get(this.oauthApiUrl + 'auth/' + code);
+    return this.http.get(this.oauthApiUrl + '/auth/' + code);
   }
 
   public updateUser(newUser: User): Observable<User> {
@@ -52,11 +52,11 @@ export class UserService {
   }
 
   public getUser(email: String): Observable<User> {
-    return this.httpClient.get<User>(this.oauthApiUrl + 'auth/user/' + email);
+    return this.httpClient.get<User>(this.oauthApiUrl + '/auth/user/' + email);
   }
 
   public isEmailExists(email: String): Observable<any> {
-    return this.httpClient.get<boolean>(this.oauthApiUrl + 'auth/exist/' + email);
+    return this.httpClient.get<boolean>(this.oauthApiUrl + '/auth/exist/' + email);
   }
 
   public replicateUserOnResourceServer(user: User, options: RequestOptions) {
