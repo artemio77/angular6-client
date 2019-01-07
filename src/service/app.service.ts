@@ -9,6 +9,7 @@ import {UserService} from './user.service';
 import {User} from '../model/user';
 import {AppComponent} from '../app/app.component';
 import {HttpClient, HttpHeaders, HttpParams, HttpRequest} from '@angular/common/http';
+import {environment} from '../environments/environment';
 
 export class Foo {
   constructor(public id: number,
@@ -21,7 +22,7 @@ export class AppService {
   private login;
 
   private users = new User();
-  private checkTokenUrl = 'https://oauth-my-autorization-server.herokuapp.com/oauth/check_token';
+  private oauthUrl = environment.oauthApiUrl;
 
   visibleLogin = true;
   private data;
@@ -43,7 +44,7 @@ export class AppService {
     });
     const options = new RequestOptions({headers: headers});
     console.log(params.toString());
-    this._http.post('https://oauth-my-autorization-server.herokuapp.com/oauth/token', params.toString(), options)
+    this._http.post(this.oauthUrl + '/oauth/token', params.toString(), options)
       .subscribe(
         data => {
           this.saveToken(data.json(), loginData.login, loginData.password);
@@ -103,7 +104,7 @@ export class AppService {
     const httpParams = new URLSearchParams();
     console.log('checkCredentials token' + Cookie.get('access_token'));
     httpParams.append('token', Cookie.get('access_token'));
-    const req = new HttpRequest('POST', this.checkTokenUrl, httpParams.toString(), {
+    const req = new HttpRequest('POST', this.oauthUrl + 'oauth/check_token', httpParams.toString(), {
       headers: headers,
     });
     this.httpClient.request(req).subscribe(

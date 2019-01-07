@@ -9,6 +9,7 @@ import {Http, HttpModule} from '@angular/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {UploadService} from '../../../service/upload.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-user-file-storage',
@@ -17,8 +18,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 })
 export class UserFileStorageComponent implements OnInit {
 
-
-  private url = 'http://localhost:8082/spring-security-oauth-resource/post';
+  private serverUrl: string = environment.mainApiUrl;
   private urlPrefix = 'application/';
   private urlSufix = '/files';
 
@@ -69,10 +69,10 @@ export class UserFileStorageComponent implements OnInit {
     }
     let file: File = files[0];
 
-    this.upload.uploadFile('http://localhost:8082/spring-security-oauth-resource/post', file, this.headers)
+    this.upload.uploadFile(this.serverUrl + '/post', file, this.headers)
       .subscribe(
         event => {
-          if (event.type == HttpEventType.UploadProgress) {
+          if (event.type === HttpEventType.UploadProgress) {
             const percentDone = Math.round(100 * event.loaded / event.total);
             console.log(`File is ${percentDone}% loaded.`);
           } else if (event instanceof HttpResponse) {
