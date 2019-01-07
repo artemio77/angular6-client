@@ -24,11 +24,12 @@ export class AppService {
   private users = new User();
   private oauthUrl = environment.oauthApiUrl;
 
-  visibleLogin = true;
+  public visibleLogin = true;
   private data;
   private foo;
 
   constructor(private _router: Router, private _http: Http, private httpClient: HttpClient, private snackBar: MatSnackBar, private userService: UserService) {
+
   }
 
   obtainAccessToken(loginData) {
