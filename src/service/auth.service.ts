@@ -12,9 +12,6 @@ export class AuthService {
   user = new User();
   login: string;
 
-
-  SESSION_STORAGE_PREFIX = 'Basic ';
-
   constructor(private http: HttpClient, private userService: UserService) {
   }
 

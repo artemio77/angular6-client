@@ -7,58 +7,56 @@ import {Http, RequestOptions} from '@angular/http';
 import {HttpClient} from '@angular/common/http';
 import {Cookie} from 'ng2-cookies';
 import {Router} from '@angular/router';
+import {environment} from '../environments/environment';
 
 
 @Injectable()
 export class UserService {
 
 
-
-  private base_url = 'http://localhost:8081/';
-  private base_url2 = 'http://localhost:8081/auth/register';
-  private resourseServerUrl = 'http://localhost:8082';
-  private user = new User();
+  private oauthApiUrl = environment.oauthApiUrl;
+  private registerUserUrl = environment.oauthApiUrl + '/auth/register';
+  private resourseServerUrl = environment.mainApiUrl;
 
   constructor(private http: Http,
-              private httpClient: HttpClient,
-              private _router: Router) {
+              private httpClient: HttpClient) {
   }
 
 
   public getAuthUser(email): Observable<User> {
-    return this.httpClient.get<User>(this.base_url + 'auth/logged/' + email, {responseType: 'json'});
+    return this.httpClient.get<User>(this.oauthApiUrl + '/auth/logged/' + email, {responseType: 'json'});
   }
 
   public getUsers() {
-    return this.http.get(this.base_url + '/all');
+    return this.http.get(this.oauthApiUrl + '/all');
   }
 
   public getUserById(id) {
-    return this.httpClient.get(this.base_url + '/id/' + id, {responseType: 'json'});
+    return this.httpClient.get(this.oauthApiUrl + '/id/' + id, {responseType: 'json'});
   }
 
   public createUser(user) {
-    return this.http.put(this.base_url2, user);
+    return this.http.put(this.registerUserUrl, user);
   }
 
   public getUserCode(code: number) {
-    return this.http.get(this.base_url + 'auth/' + code);
+    return this.http.get(this.oauthApiUrl + '/auth/' + code);
   }
 
   public updateUser(newUser: User): Observable<User> {
-    return this.httpClient.put<User>(`${this.base_url}/${newUser.id}`, newUser);
+    return this.httpClient.put<User>(`${this.oauthApiUrl}/${newUser.id}`, newUser);
   }
 
   public deleteUser(user) {
-    return this.http.delete(this.base_url + '/' + user.id);
+    return this.http.delete(this.oauthApiUrl + '/' + user.id);
   }
 
   public getUser(email: String): Observable<User> {
-    return this.httpClient.get<User>(this.base_url + 'auth/user/' + email);
+    return this.httpClient.get<User>(this.oauthApiUrl + '/auth/user/' + email);
   }
 
   public isEmailExists(email: String): Observable<any> {
-    return this.httpClient.get<boolean>(this.base_url + 'auth/exist/' + email);
+    return this.httpClient.get<boolean>(this.oauthApiUrl + '/auth/exist/' + email);
   }
 
   public replicateUserOnResourceServer(user: User, options: RequestOptions) {

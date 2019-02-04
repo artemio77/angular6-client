@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve  --port 8086",
+    "start": "ng serve  --port 8086 ",
     "build": "ng build --prod --aot=false --build-optimizer=false",
     "test": "ng test",
     "lint": "ng lint",
