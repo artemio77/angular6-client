@@ -93,7 +93,8 @@ import {UploadService} from '../service/upload.service';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    MatFileUploadModule
   ],
   declarations: [RegistrationSnackBarComponent]
 })
@@ -126,7 +127,6 @@ export class DemoMaterialModule {
     LoadingBarHttpModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
-    MatFileUploadModule,
     RouterModule
   ],
   providers: [
