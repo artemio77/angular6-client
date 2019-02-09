@@ -36,7 +36,7 @@ export class UserService {
   }
 
   public createUser(user) {
-    return this.http.put(this.registerUserUrl, user);
+    return this.http.put(this.oauthApiUrl + this.registerUserUrl, user);
   }
 
   public getUserCode(code: number) {

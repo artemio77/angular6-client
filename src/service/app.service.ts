@@ -69,26 +69,6 @@ export class AppService {
     this._router.navigate(['/application/' + Cookie.get('login')]);
   }
 
-  replicateUser(resourceUrl, user): Observable<User> {
-    const headers = new Headers({
-      'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + Cookie.get('access_token')
-    });
-    const options = new RequestOptions({headers: headers});
-    console.log(Cookie.get('access_token'));
-    console.log(user);
-    return this._http.put(resourceUrl, user, options).pipe(map(res => this.data = res.json()));
-  }
-
-  getResource(resourceUrl): Observable<Foo> {
-    const headers = new Headers({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-      'Authorization': 'Bearer ' + Cookie.get('access_token')
-    });
-    const options = new RequestOptions({headers: headers});
-    return this._http.get(resourceUrl, options).pipe(map(data => this.foo = data.json()));
-  }
-
   setAuthLogin(login) {
     this.login = login;
   }
