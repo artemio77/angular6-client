@@ -10,7 +10,8 @@ import {Router} from '@angular/router';
 import {map} from 'rxjs/internal/operators';
 import {Observable} from 'rxjs';
 import {AuthService} from '../../service/auth.service';
-import {MatSidenav} from '@angular/material';
+import {DialogPosition, MatDialog, MatSidenav} from '@angular/material';
+import {UserSearchComponent} from './user-search/user-search.component';
 
 @Component({
   selector: 'app-user',
@@ -18,40 +19,22 @@ import {MatSidenav} from '@angular/material';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  @Input()
-  private user = new User();
+  private user: User;
   private currentUser: Observable<User>;
   urlPrefix = '/application/';
   urlSuffix = '';
-  private routeOnChatUrl: string = '/application/' + Cookie.get('login') + '/chat';
-  private routeOnAppUrl: string = '/application/' + Cookie.get('login') + '/context';
-  private routeOnFileStorageUrl: string = '/application/' + Cookie.get('login') + '/files';
-  private sidenav: MatSidenav;
-
   @Output() childEvent = new EventEmitter();
-
-  closeSide() {
-    this.childEvent.emit('closeSide');
-  }
+  private sidenav: MatSidenav;
 
   constructor(private appService: AppService,
               private userService: UserService,
               private loader: LoadingBarService,
               private appComponent: AppComponent,
               private authService: AuthService,
-              private _router: Router) {
+              private _router: Router,
+              public dialog: MatDialog) {
 
 
-  }
-
-  routeOnChat() {
-    this.sidenav.close();
-    this._router.navigate([this.routeOnChatUrl]);
-  }
-
-  routeOnApplication() {
-
-    this._router.navigate([this.routeOnAppUrl]);
   }
 
   ngOnInit() {
@@ -60,6 +43,21 @@ export class UserComponent implements OnInit {
     this.currentUser.subscribe(data => this.user = data);
   }
 
+  public getUser() {
+    return this.currentUser;
+  }
+
+  searchContact() {
+
+    const dialogRef = this.dialog.open(UserSearchComponent, {
+      width: '850vh',
+      height: '70vh'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
   logout() {
     this.appService.logout();

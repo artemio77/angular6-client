@@ -4,7 +4,7 @@ import {User} from '../model/user';
 import {Observable} from 'rxjs/index';
 
 import {Http, RequestOptions} from '@angular/http';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Cookie} from 'ng2-cookies';
 import {Router} from '@angular/router';
 import {environment} from '../environments/environment';
@@ -36,7 +36,8 @@ export class UserService {
   }
 
   public createUser(user) {
-    return this.http.put(this.oauthApiUrl + this.registerUserUrl, user);
+    console.log(user);
+    return this.httpClient.put(this.registerUserUrl, user);
   }
 
   public getUserCode(code: number) {
@@ -51,8 +52,12 @@ export class UserService {
     return this.http.delete(this.oauthApiUrl + '/' + user.id);
   }
 
-  public getUser(email: String): Observable<User> {
-    return this.httpClient.get<User>(this.oauthApiUrl + '/auth/user/' + email);
+  public getUserFromCassandra(email: String): Observable<User> {
+    const headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Authorization': 'Bearer ' + Cookie.get('access_token')
+    });
+    return this.httpClient.get<User>(this.resourseServerUrl + '/auth/user/' + email, {headers});
   }
 
   public isEmailExists(email: String): Observable<any> {

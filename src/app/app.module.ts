@@ -53,6 +53,8 @@ import {UserChatComponent} from './application/user-chat/user-chat.component';
 import {RouterModule} from '@angular/router';
 import {UserFileStorageComponent} from './application/user-file-storage/user-file-storage.component';
 import {UploadService} from '../service/upload.service';
+import {UserSearchComponent} from './application/user-search/user-search.component';
+import {UserNavComponent} from './application/user-nav/user-nav.component';
 
 
 @NgModule({
@@ -103,8 +105,10 @@ export class DemoMaterialModule {
 
 
 @NgModule({
+  entryComponents: [UserSearchComponent],
   declarations: [
     AppComponent,
+    UserNavComponent,
     RegistrationComponent,
     LoginComponent,
     UserComponent,
@@ -112,7 +116,8 @@ export class DemoMaterialModule {
     ProgressBarComponent,
     UserContentComponent,
     UserChatComponent,
-    UserFileStorageComponent
+    UserFileStorageComponent,
+    UserSearchComponent
   ],
   imports: [
     AppRoutingModule,

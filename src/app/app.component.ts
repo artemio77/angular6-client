@@ -9,13 +9,14 @@ import {UserService} from '../service/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-
+export class AppComponent implements OnInit {
 
   constructor(private appService: AppService,
               private loader: LoadingBarService,
               private userService: UserService) {
-    appService.visibleLogin = true;
+  }
+
+  ngOnInit(){
   }
 
 }

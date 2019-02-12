@@ -32,6 +32,10 @@ export class AppService {
 
   }
 
+  setVisible(state: boolean) {
+    this.visibleLogin = state;
+  }
+
   obtainAccessToken(loginData) {
     const params = new URLSearchParams();
     params.append('username', loginData.login);
@@ -92,10 +96,10 @@ export class AppService {
       token => {
         if (!Cookie.get('access_token')) {
           Cookie.deleteAll('localhost');
-          this.visibleLogin = true;
+          this.setVisible(true);
           this._router.navigate(['login']);
         } else {
-          this.visibleLogin = false;
+          this.setVisible(false);
         }
 
       }, error2 => {
@@ -109,7 +113,7 @@ export class AppService {
   logout() {
     Cookie.delete('access_token', 'localhost');
     Cookie.deleteAll('localhost');
-    this.visibleLogin = true;
+    this.setVisible(false);
     console.log(Cookie.get('access_token'));
     console.log(this.visibleLogin);
     this._router.navigate(['login']);

@@ -24,5 +24,6 @@ export class LoginRegistrationComponent implements OnInit {
   ngOnInit(): void {
     Cookie.deleteAll('localhost');
     this.appService.checkCredentials(this.urlSufix, Cookie.get('login'), null);
+    this.appService.setVisible(true);
   }
 }

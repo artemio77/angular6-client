@@ -1,10 +1,6 @@
 .user-card {
-  position: absolute;
+  position: relative;
   max-width: 150vh;
-  top: 20%;
-  right: 0;
-  bottom: 20%;
-  left: 0;
   margin: auto;
   height: 90vh;
 }
