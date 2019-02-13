@@ -1,0 +1,16 @@
+<div class="col-lg-6">
+  <form>
+    <h1>Search contact</h1>
+    <mat-form-field >
+      <input [(ngModel)]="email" matInput placeholder="Email" [formControl]="emailFormControl"
+             [errorStateMatcher]="matcher">
+    </mat-form-field>
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </form>
+  <button mat-raised-button (click)="search()">Search</button>
+</div>

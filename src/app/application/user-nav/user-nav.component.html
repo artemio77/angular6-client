@@ -1,0 +1,23 @@
+<mat-nav-list>
+  <mat-list-item>
+    {{user.firstName}} {{user.lastName}}
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>{{user.email}}</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item [routerLink]="routeOnAppUrl" (click)="snav.close()">Applications</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item [routerLink]="routeOnChatUrl" (click)="snav.close()">Messages</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>Groups</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item [routerLink]="routeOnFileStorageUrl" (click)="snav.close()">File Store</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>Settings</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item (click)="logout()">Logout</mat-list-item>
+</mat-nav-list>
+
+
+
+
